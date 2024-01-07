@@ -1,11 +1,32 @@
 
-# Perpustakaan API
+# Perpustakaan
 
-API for Perpustakaan apps
+This Library App is designed to streamline the process of managing books within a library. Users can explore the extensive book catalog, check book availability, while administrators have access to advanced features such as loan creation, updates, and a comprehensive loan history dashboard.
 
+
+## Features
+
+- Book Catalog: Explore a vast collection of books with details on authors, overviews, and titles.
+- Loan Management Dashboard: Get an overview of current loans, track statuses, and manage lending operations.
+- Loan Creation: Easily create new loans, input borrower details, book information, and due dates.
+- Loan Updates (Return Books): Update loan statuses when books are returned to maintain an organized library system.
+- Loan History: Access a comprehensive history to analyze trends and optimize library operations.
+
+
+## Tech Stack
+
+**Front End:** SwiftUI
+
+**Back End:** Laravel
+
+
+## Documentation
+
+[Documentation](https://github.com/feliciagraciella/Perpustakaan/tree/main/Perpustakaan-New/Perpustakaan-New.doccarchive)
 
 
 ## API Reference
+https://github.com/feliciagraciella/Perpustakaan-API
 
 ### Get book list
 
@@ -102,8 +123,6 @@ Example
   "memberName": "John Doe"
 }
 ```
-
-
 
 
 
