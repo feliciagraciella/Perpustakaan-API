@@ -28,8 +28,10 @@ class MemberController extends Controller
             'updated_at' => now()
         ]);
 
-        $member = DB::table('members')->latest()->first();
+        // $member = DB::table('members')->latest()->first();
 
-        return new MemberResource($member);
+        // return new MemberResource($member);
+
+        return 'added new member';
     }
 }

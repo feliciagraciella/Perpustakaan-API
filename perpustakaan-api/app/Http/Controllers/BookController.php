@@ -21,47 +21,49 @@ class BookController extends Controller
     }
 
     public function show($id) {
-        $product = Product::findOrFail($id);
+        $book = Book::findOrFail($id);
 
         // return response()->json(['data' => $product]);
-        return new ProductDetailResource($product); 
+        return new BookResource($book); 
     }
 
-    public function insertBook(Request $request) {
-        $request->validate([
-            'pName' => 'required|max:50',
-            'pDescription' => 'max:255',
-            'pQuantity' => 'required|min:0',
-            'pPrice' => 'required|min:1'
-        ]);
+    // public function insertBook(Request $request) {
+    //     $request->validate([
+    //         'pName' => 'required|max:50',
+    //         'pDescription' => 'max:255',
+    //         'pQuantity' => 'required|min:0',
+    //         'pPrice' => 'required|min:1'
+    //     ]);
 
-        if ($request->pPhoto) {
-            $fileName = Str::random(25);
-            $extension = $request->pPhoto->extension();
+    //     if ($request->pPhoto) {
+    //         $fileName = Str::random(25);
+    //         $extension = $request->pPhoto->extension();
 
-            Storage::putFileAs('image', $request->pPhoto, $fileName.'.'.$extension);
+    //         Storage::putFileAs('image', $request->pPhoto, $fileName.'.'.$extension);
 
-            $request['pPhoto'] = $fileName . '.' . $extension;
-        }
+    //         $request['pPhoto'] = $fileName . '.' . $extension;
+    //     }
 
-        DB::table('products')->insert([
-            'pName' => $request->pName,
-            'pDescription' => $request->pDescription,
-            'pQuantity' => $request->pQuantity,
-            'pPrice' => $request->pPrice,
-            'pPhoto' => $fileName . '.' . $extension,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+    //     DB::table('products')->insert([
+    //         'pName' => $request->pName,
+    //         'pDescription' => $request->pDescription,
+    //         'pQuantity' => $request->pQuantity,
+    //         'pPrice' => $request->pPrice,
+    //         'pPhoto' => $fileName . '.' . $extension,
+    //         'created_at' => now(),
+    //         'updated_at' => now()
+    //     ]);
 
-        // return new ProductResource($product);
-        return 'success';
-    }
+    //     // return new ProductResource($product);
+    //     return 'success';
+    // }
 
     public function updateBook(Request $request, $id) {
         $validated = $request->validate([
             'bookTitle' => 'required|max:100',
             'availableStatus' => 'required',
+            'bookWriter' => 'required',
+            'bookOverview' => 'required',
             'bookCover' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
         ]);
     
@@ -77,6 +79,8 @@ class BookController extends Controller
             $product->update([
                 'bookTitle' => $request->bookTitle,
                 'bookCover' => $base64,
+                'bookWriter' => $request->bookWriter,
+                'bookOverview' => $request->bookOverview,
                 'availableStatus' => $request->availableStatus,
                 'updated_at' => now(),
             ]);
@@ -84,11 +88,13 @@ class BookController extends Controller
         } else {
             $product->update([
                 'bookTitle' => $request->bookTitle,
+                'bookWriter' => $request->bookWriter,
+                'bookOverview' => $request->bookOverview,
                 'availableStatus' => $request->availableStatus,
                 'updated_at' => now(),
             ]);
+
+            return 'Successfully updated';
         }
-    
-        return 'Successfully updated';
     }
 }

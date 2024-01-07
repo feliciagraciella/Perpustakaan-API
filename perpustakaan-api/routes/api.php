@@ -31,22 +31,11 @@ Route::get('/loans', [LoanController::class, 'index']) ;
 // LOAN DETAIL (GET) ------ DONE -------
 Route::get('/loans/{id}', [LoanController::class, 'show']); 
 
-// LOAN RETURN (UPDATE)
-Route::put('/loans/return/{loanID}/{bookID}', [LoanController::class, 'returnBook']);
+// LOAN RETURN (UPDATE) ------ DONE -------
+Route::put('/books/return/{loanID}/{bookID}', [LoanController::class, 'returnBook']);
 
 // BOOK LIST - CATALOG (GET) ------ DONE -------
 Route::get('/books', [BookController::class, 'index']);
-
-// BOOK DETAIL ? (GET)
-Route::get('/books/{id}', [BookController::class, 'show']);
-
-// NEW BOOK (POST)
-Route::post('/books/create', [BookController::class, 'insertProduct']);
-
-// UPDATE BOOK (PUT)
-Route::put('/books/{id}/update', [BookController::class, 'updateBook']);
-
-Route::get('/images/{id}', [ImageController::class, 'show']);
 
 // MEMBER LIST (GET) ------ DONE -------
 Route::get('/members', [MemberController::class, 'index']) ;
@@ -54,10 +43,29 @@ Route::get('/members', [MemberController::class, 'index']) ;
 // NEW MEMBER (POST) ------ DONE -------
 Route::post('/members/create', [MemberController::class, 'newMember']);
 
+// BOOK DETAIL (GET)
+Route::get('/books/{id}', [BookController::class, 'show']);
+
+// UPDATE BOOK (PUT)
+Route::put('/books/{id}/update', [BookController::class, 'updateBook']);
 
 
-Route::delete('/products/{id}/delete', [ProductController::class, 'deleteProduct']);
-Route::get('/products/{id}/restore', [ProductController::class, 'restoreProduct']);
-// Route::get('/product/image/{id}', 'ProductController@getImage')->name('product.image');
+
+
+
+
+// NEW BOOK (POST)
+Route::post('/books/create', [BookController::class, 'insertProduct']);
+
+
+
+// DELETE BOOK (DELETE)
+// Route::put('/books/{id}/update', [BookController::class, 'updateBook']);
+
+// Route::get('/images/{id}', [ImageController::class, 'show']);
+
+
+
+
 
 
