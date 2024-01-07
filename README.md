@@ -22,7 +22,8 @@ This Library App is designed to streamline the process of managing books within 
 
 ## Documentation
 
-[Documentation](https://github.com/feliciagraciella/Perpustakaan/tree/main/Perpustakaan-New/Perpustakaan-New.doccarchive)
+(https://github.com/feliciagraciella/Perpustakaan/tree/main/Perpustakaan-New/Perpustakaan-New.doccarchive)
+(https://www.notion.so/Perpustakaan-Documentation-bd44537e198341a09d63e8e7abcd6e95)
 
 
 ## API Reference
